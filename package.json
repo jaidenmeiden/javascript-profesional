@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jaidenmeiden/javascript-profesional/issues"
   },
-  "homepage": "https://github.com/jaidenmeiden/javascript-profesional#readme"
+  "homepage": "https://github.com/jaidenmeiden/javascript-profesional#readme",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
 }
