@@ -183,4 +183,7 @@ modules.xml
 .idea/**/markdown-navigator.xml
 .idea/**/markdown-navigator/
 
+# Se evita la carga de videos al repositorio
+*.mp4
+
 # End of https://www.gitignore.io/api/node,webstorm
