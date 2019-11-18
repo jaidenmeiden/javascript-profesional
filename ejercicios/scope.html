@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <title>Scope</title>
+  </head>
+
+  <body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
+
+    <script>
+
+      //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      //++++++++++++++++++++ Global Scope +++++++++++++++++++++++++++++++
+      //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      // var message = 'Hello, Platzi!';
+      // var $ = function(message) {
+      //   console.log('Say: ' + message);
+      // };
+
+      //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      //++++++++++++++++++++ Function Scope ++++++++++++++++++++++++++++
+      //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      //++++++++++++++++++++ Ejemplo de mala practica ++++++++++++++++++
+      // function printNumbers1() {
+      //   var i;
+      //   for (i = 0; i < 10; i++) {
+      //       setTimeout(function() {
+      //           console.log("a. " + i);
+      //       }, 100);
+      //   }
+      // }
+      // printNumbers1();
+
+      //+++++++++ Aplicando function para generar nuevo Scope ++++++++++
+      // En el nuevo 'Scope' el valor de 'n' se mantiene, ya que por cada
+      // iteración genera el nuevo 'Scope' con un unico valor de 'n'
+      //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      // function printNumbers2() {
+      //   var i;
+      //   for (i = 0; i < 10; i++) {
+      //     function eventuallyPrintNumber(n) {
+      //       setTimeout(function() {
+      //         console.log("b. " + n);
+      //       }, 100);
+      //     }
+      //     eventuallyPrintNumber(i);
+      //   }
+      // }
+      // printNumbers2();
+
+      //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      //++++++++++++++++++++ Block Scope +++++++++++++++++++++++++++++++
+      // El valor se mantiene ya que let opera sobre el 'Block Scope',
+      // que en este caso es el bloque 'for'. El interprete (Navegador) 
+      // detecta el valor de 'i' en cada iteración y lo mantiene en 
+      // el bloque de la iteación.
+      //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      // function printNumbers3() {
+      //   for (let i = 0; i < 10; i++) {
+      //     setTimeout(function() {
+      //       console.log(i);
+      //     }, 100);
+      //   }
+      // }
+      // printNumbers3();
+      // Module Scope
+      // Se explica en detalle con el proyecto MediaPlayer
+    </script>
+  </body>
+</html>
