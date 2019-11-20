@@ -9,16 +9,39 @@
 
     <script>
       // Closures
+      // --------------------------------------------------------------------------------------
       // printColor
-      // IIFE
-      (function() {
-        let color = 'green';
-        function printColor() {
-          console.log(color);
-        }
-        printColor();
-      })();
+      // --------------------------------------------------------------------------------------
+      // El problema a continuación es que la variable 'color1' esta disponible globalmante
+      // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      // let color1 = 'gray';
+      // function printColor() {
+      //   console.log(color1);
+      // }
+      // printColor();
+      // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+      // --------------------------------------------------------------------------------------
+      // IIFE (Immediately invoked function expression) => Expresión de función ejecutada inmediatamente
+      // --------------------------------------------------------------------------------------
+      // A continuación se contruye el Closure, el cual no permite que la variable 'color2' este disponible
+      // por el scope global
+      // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      // (function() {
+      //   let color2 = 'green';
+      //   function printColor() {
+      //     console.log(color2);
+      //   }
+      //   printColor();
+      // })();
+      // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+      // --------------------------------------------------------------------------------------
       // Funciones que regresan funciones
+      // --------------------------------------------------------------------------------------
+      // La función esta recordando el mensaje que se definio por fuera de la función. El closure
+      // permite hacer una funcionalidad que el lenguaje no trae.
+      // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
       // function makeColorPrinter(color) {
       //   let colorMessage = `The color is ${color}`;
       //   return function() {
@@ -26,7 +49,10 @@
       //   };
       // }
       // let greenColorPrinter = makeColorPrinter('green');
-      // console.log(greenColorPrinter());
+      // console.log(greenColorPrinter); // Regresa la función
+      // console.log(greenColorPrinter()); // Regresa el valor
+      // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
       // variables "privadas"
       // const counter = {
       //   count: 3,
