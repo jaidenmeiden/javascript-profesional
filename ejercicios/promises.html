@@ -25,12 +25,32 @@
       // The Movie Database API: https://developers.themoviedb.org/3/getting-started/introduction
       const apiKey = 'b89fc45c2067cbd33560270639722eae';
 
+      // --------------------------------------------------------------------------
+      // La función tambien funciona con (then), pero es mas apropiado y facil de
+      // mantener utilizando (async/await)
+      // --------------------------------------------------------------------------
+      // function getMovie(id) {
+      //   const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
+      //   return fetch(url).then(response => response.json())
+      // }
+
       async function getMovie(id) {
         const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
         const response = await fetch(url);
         const data = await response.json();
         return data;
       }
+
+      // --------------------------------------------------------------------------
+      // La función tambien funciona con (then), pero es mas apropiado y facil de
+      // mantener utilizando (async/await)
+      // --------------------------------------------------------------------------
+      // function getPopularMovies() {
+      //   const url = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${apiKey}`;
+      //   return fetch(url)
+      //           .then(response => response.json())
+      //           .then(data => data.results)
+      // }
 
       async function getPopularMovies() {
         const url = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${apiKey}`;
@@ -39,19 +59,30 @@
         return data.results;
       }
 
+      // --------------------------------------------------------------------------
+      // La función tambien funciona con (then), pero es mas apropiado y facil de
+      // mantener utilizando (async/await)
+      // --------------------------------------------------------------------------
+      // async function getTopMoviesIds(n = 3) {
+      //   return getPopularMovies().then(popularMovies =>
+      //     popularMovies.slice(0, n).map(movie => movie.id)
+      //   );
+      // }
+
       async function getTopMoviesIds(n = 3) {
-        // return getPopularMovies().then(popularMovies =>
-        //   popularMovies.slice(0, n).map(movie => movie.id)
-        // );
+        // --------------------------------------------------------------------------
+        // Esto devuelve una promesa y puede arrojar un error, el cual
+        // puede ser manejado a traves de un try catch
+        // --------------------------------------------------------------------------
         // try {
         //   const popularMovies = await getPopularMovies();
         // } catch (error) {
         //   console.log(error.message)
         // }
 
-        // const popularMovies = await getPopularMovies();
-        // const ids = popularMovies.slice(0, n).map(movie => movie.id);
-        // return ids;
+        const popularMovies = await getPopularMovies();
+        const ids = popularMovies.slice(0, n).map(movie => movie.id);
+        return ids;
       }
 
       function renderMovies(movies) {
@@ -70,6 +101,9 @@
         });
       }
 
+      // --------------------------------------------------------------------------
+      //Obtener la peliculas en secuencia
+      // --------------------------------------------------------------------------
       async function getTopMoviesInSequence() {
         const ids = await getTopMoviesIds();
         const movies = [];
@@ -82,6 +116,9 @@
         return movies;
       }
 
+      // --------------------------------------------------------------------------
+      //Obtener la peliculas en paralelo
+      // --------------------------------------------------------------------------
       async function getTopMoviesInParallel() {
         const ids = await getTopMoviesIds();
         const moviePromises = ids.map(id => getMovie(id));
@@ -91,6 +128,9 @@
         return movies;
       }
 
+      // --------------------------------------------------------------------------
+      //Obtener la pelicula mas rapida
+      // --------------------------------------------------------------------------
       async function getFastestTopMovie() {
         const ids = await getTopMoviesIds();
         const moviePromises = ids.map(id => getMovie(id));
