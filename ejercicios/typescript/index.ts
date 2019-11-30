@@ -1,3 +1,6 @@
+console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+console.log("Tipos basicos");
+console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 // Boolean
 let muted: boolean = true;
 muted = false;
@@ -34,3 +37,13 @@ enum Color {
 
 let colorFavorito: Color = Color.Amarillo;
 console.log(`Mi color favorito es ${colorFavorito}`);
+
+// Any
+let comodin: any = 'Joker';
+comodin = { type: 'Wildcard' };
+console.log(comodin);
+
+// Object
+let someObject: object = { type: 'Wildcard' };
+console.log(someObject);
+console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
