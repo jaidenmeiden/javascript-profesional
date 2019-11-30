@@ -2,6 +2,7 @@ class AutoPause {
   constructor() {
     this.threshold = 0.25;
     this.handleIntersection = this.handleIntersection.bind(this);// Hacemos permante el 'this' a la intancia del objeto 'AutoPause'
+    this.handleVisibilityChange = this.handleVisibilityChange.bind(this);// Hacemos permante el 'this' a la intancia del objeto 'AutoPause'
     // Lo anterior se hace debido a que al llamar la función 'handleIntersection' adentro del objeto 'IntersectionObserver'
     // el 'this' se refiere al 'IntersectionObserver' y no al 'AutoPause'. Por esa razón se hace permanente el 'this'
   }
@@ -19,6 +20,8 @@ class AutoPause {
 
     //El 'observer' se pone a observar el elemento 'media' y nuestro contenedor va a ser toda la pantalla
     observer.observe(this.player.media);
+
+    document.addEventListener('visibilitychange', this.handleVisibilityChange);
   }
 
   // Cuando se llama esta función se pasa un alista de 'entries',
@@ -30,6 +33,18 @@ class AutoPause {
     // Guardamos el porcentaje real que esta visible, dicho porcentale lo da
     // la variable 'intersectionRatio' del 'entry', obtenida al ejecutar 'console.log'
     const isVisible = entry.intersectionRatio >= this.threshold;
+
+    if (isVisible) {
+      this.player.play();
+    } else {
+      this.player.pause();
+    }
+  }
+
+  //El video se pausa o se activa si cambiamos de pestaña
+  handleVisibilityChange() {
+    const isVisible = document.visibilityState === 'visible';
+    console.log(document.visibilityState);
 
     if (isVisible) {
       this.player.play();
