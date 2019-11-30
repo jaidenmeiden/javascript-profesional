@@ -30,14 +30,14 @@ async function precache() {
   const cache = await caches.open(VERSION); // Regresa una promesa
   // Lista de recursos (assets)
   return cache.addAll([
-    '/',
-    '/index.html',
-    '/assets/index.js',
-    '/assets/MediaPlayer.js',
-    '/assets/plugins/AutoPlay.js',
-    '/assets/plugins/AutoPause.js',
-    '/assets/index.css',
-    '/assets/BigBuckBunny.mp4',
+    // '/',
+    // '/index.html',
+    // '/assets/index.js',
+    // '/assets/MediaPlayer.js',
+    // '/assets/plugins/AutoPlay.js',
+    // '/assets/plugins/AutoPause.ts',
+    // '/assets/index.css',
+    // '/assets/BigBuckBunny.mp4',
   ]);
 }
 
