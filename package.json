@@ -1,0 +1,28 @@
+{
+  "name": "javascript-profesional",
+  "version": "1.0.0",
+  "description": "Experimentos con Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html ejercicios/index.html ejercicios/**/*.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaidenmeiden/javascript-profesional.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jaidenmeiden/javascript-profesional/issues"
+  },
+  "homepage": "https://github.com/jaidenmeiden/javascript-profesional#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.7.2"
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
+}
